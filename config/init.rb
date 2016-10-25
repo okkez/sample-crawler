@@ -6,7 +6,7 @@ DaimonSkycrawlers.configure do |config|
   config.logger = DaimonSkycrawlers::Logger.default
   config.logger.level = :debug
   config.crawler_interval = 1
-  config.shutdown_interval = 30
+  config.shutdown_interval = 300
 end
 
 DaimonSkycrawlers::Queue.configure do |config|
