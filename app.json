@@ -18,5 +18,8 @@
     {
       "url": "https://github.com/heroku/heroku-buildpack-ruby"
     }
-  ]
+  ],
+  "scripts": {
+    "postdeploy": "bundle exec rake db:schema:load"
+  }
 }
