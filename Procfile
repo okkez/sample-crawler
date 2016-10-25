@@ -1,1 +1,1 @@
-worker: bundle exec daimon_skycrawlers exec processor
+worker: bundle exec daimon_skycrawlers exec crawler
