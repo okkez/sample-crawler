@@ -31,9 +31,8 @@ GEM
     bunny (2.6.1)
       amq-protocol (>= 2.0.1)
     concurrent-ruby (1.0.2)
-    daimon_skycrawlers (0.7.1)
+    daimon_skycrawlers (0.7.2)
       activerecord
-      bundler (~> 1.11)
       faraday
       faraday_middleware
       nokogiri
