@@ -1,0 +1,19 @@
+{
+  "name": "daimon-sample-crawler",
+  "repository": "https://github.com/okkez/sample-crawler.git",
+  "env":{
+    "HEROKU_APP_NAME": {
+      "required": true
+    },
+  },
+  "addons": [
+    "cloudamqp:lemur",
+    "heroku-postgresql:hobby-dev",
+    "papertrail:choklad"
+  ],
+  "buildpacks": [
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-ruby"
+    }
+  ]
+}
