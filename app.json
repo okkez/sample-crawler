@@ -4,6 +4,9 @@
   "env":{
     "HEROKU_APP_NAME": {
       "required": true
+    },
+    "SKYCRAWLERS_ENV": {
+      "required": true
     }
   },
   "addons": [
