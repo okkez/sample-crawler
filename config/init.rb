@@ -11,16 +11,13 @@ end
 
 DaimonSkycrawlers::Queue.configure do |config|
   # queue configuration
-  #amqp_uri = URI(ENV["CLOUDAMQP_URL"])
-  amqp_uri = URI(ENV["RABBITMQ_BIGWIG_URL"])
+  amqp_uri = URI(ENV["CLOUDAMQP_URL"])
   config.logger = DaimonSkycrawlers.configuration.logger
   config.host = amqp_uri.host
   # config.port = 5672
-  config.port = amqp_uri.port
   config.username = amqp_uri.user
   config.password = amqp_uri.password
-  # config.vhost = amqp_uri.user
-  config.vhost = amqp_uri.path.sub(/\A\//, "")
+  config.vhost = amqp_uri.user
   config.max_reconnect_attempts = 10
   config.network_recovery_interval = 1.0
 end
