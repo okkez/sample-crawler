@@ -20,7 +20,7 @@ DaimonSkycrawlers::Queue.configure do |config|
   config.username = amqp_uri.user
   config.password = amqp_uri.password
   # config.vhost = amqp_uri.user
-  config.vhost = amqp_uri.path
+  config.vhost = amqp_uri.path.sub(/\A\//, "")
   config.max_reconnect_attempts = 10
   config.network_recovery_interval = 1.0
 end
