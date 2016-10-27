@@ -10,14 +10,18 @@ DaimonSkycrawlers.configure do |config|
 end
 
 DaimonSkycrawlers::Queue.configure do |config|
-  # queue configuration
-  amqp_uri = URI(ENV["CLOUDAMQP_URL"])
+  if ENV["CLOUDAMQP_URL"]
+    amqp_uri = URI(ENV["CLOUDAMQP_URL"])
+    config.host = amqp_uri.host
+    config.username = amqp_uri.user
+    config.password = amqp_uri.password
+    config.vhost = amqp_uri.user
+  else
+    config.port = 5672
+    config.host = "localhost"
+    config.vhost = "/"
+  end
   config.logger = DaimonSkycrawlers.configuration.logger
-  config.host = amqp_uri.host
-  # config.port = 5672
-  config.username = amqp_uri.user
-  config.password = amqp_uri.password
-  config.vhost = amqp_uri.user
   config.max_reconnect_attempts = 10
   config.network_recovery_interval = 1.0
 end
