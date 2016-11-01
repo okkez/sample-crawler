@@ -1,0 +1,37 @@
+version: "2"
+services:
+  rabbitmq:
+    image: rabbitmq
+    ports:
+     - "5672:5672" # HOST:CONTAINER
+
+  db:
+    build:
+      context: .
+      dockerfile: Dockerfile.db
+    env_file: .env.db
+    ports:
+     - "5433:5432" # HOST:CONTAINER
+
+  common: &common
+    build:
+      context: .
+      args:
+        - SKYCRAWLERS_ENV=development
+    links:
+      - rabbitmq
+      - db
+    volumes:
+      - ./:/home/crawler
+      - ./docker-cache/.bundle:/home/crawler/.bundle
+      - ./docker-cache/bundle:/home/crawler/vendor/bundle
+    working_dir: /home/crawler
+    env_file: .env
+
+  crawler:
+    <<: *common
+    command: crawler
+
+  processor:
+    <<: *common
+    command: processor

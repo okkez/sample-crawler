@@ -4,6 +4,11 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: 5
+  host: <%= ENV.fetch("SKYCRAWLERS_DATABASE_HOST", "localhost") %>
+<% if ENV.key?("SKYCRAWLERS_DATABASE_USER") %>
+  username: <%= ENV.fetch("SKYCRAWLERS_DATABASE_USER", "") %>
+  password: <%= ENV.fetch("SKYCRAWLERS_DATABASE_PASSWORD", "") %>
+<% end %>
 
 development:
   <<: *default

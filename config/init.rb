@@ -18,7 +18,7 @@ DaimonSkycrawlers::Queue.configure do |config|
     config.vhost = amqp_uri.user
   else
     config.port = 5672
-    config.host = "localhost"
+    config.host = ENV["SKYCRAWLERS_RABBITMQ_HOST"] || "localhost"
     config.vhost = "/"
   end
   config.logger = DaimonSkycrawlers.configuration.logger
