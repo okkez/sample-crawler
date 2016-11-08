@@ -23,3 +23,5 @@ COPY . .
 ADD services/common/docker-entrypoint.sh /docker-entrypoint.sh
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["$SKYCRAWLERS_MAIN"]
+# For Heroku docker
+# CMD bundle exec daimon_skycrawlers exec crawler
