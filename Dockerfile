@@ -18,6 +18,8 @@ RUN if [ "$SKYCRAWLERS_ENV" = "production" ]; then \
       bundle install --without development:test; \
     fi
 
+COPY . .
+
 ADD services/common/docker-entrypoint.sh /docker-entrypoint.sh
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["$SKYCRAWLERS_MAIN"]
