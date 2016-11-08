@@ -1,0 +1,6 @@
+/docker-cache
+/.ash_history
+/.bundle
+/.git
+/services
+/vendor
